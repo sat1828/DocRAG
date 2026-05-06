@@ -286,52 +286,6 @@ curl -X POST http://localhost:8000/api/chat/query \
   "hallucination_risk": "low",
   "response_time_ms": 1850
 }
-```
-
----
-
-## 📈 Why This Gets 50 LPA Offers
-
-### 1. **Production-Grade Multi-Tenant SaaS**
-Not a tutorial. Real authentication, authorization, database schema, multi-tenant isolation, audit logs, rate limiting.
-
-### 2. **End-to-End Ownership**
-- Database design (PostgreSQL + ChromaDB)
-- AI/ML pipeline (Docling → Embeddings → LangGraph → LLM)
-- Backend API (FastAPI with async, validation, error handling)
-- Frontend UI (Next.js with 3D, animations, glassmorphism)
-- DevOps (Docker Compose, CI/CD, health checks)
-
-### 3. **Research-Backed Uniqueness**
-- Implements 2026 techniques (Docling, agentic RAG, multimodal embeddings)
-- Cites papers and benchmarks
-- Includes RAGAS evaluation notebook with A/B testing
-
-### 4. **Real-World Impact**
-- Solves actual pain point for 63 million Indian SMEs
-- Indian GST/legal compliance focus (not generic)
-- Measurable metrics (70% time savings, <3% hallucination)
-
-### 5. **Interview Talking Points**
-- Trade-offs: CPU vs GPU, Chroma vs Pinecone, Docling vs Unstructured
-- Failure modes: OCR accuracy on scanned docs, LLM hallucinations, multi-tenant leaks
-- Scalability path: Distributed Chroma, model quantization, caching
-
----
-
-## 🎬 2-Minute Demo Script (Loom-Style)
-
-**[0:00-0:15]** Login screen → "Welcome to Indian SME Document Intelligence. Watch me process a GST invoice in seconds."
-
-**[0:15-0:30]** Upload PDF → Show 3D particle effect → "Document is parsing with Docling, extracting tables and text automatically."
-
-**[0:30-0:50]** Ask: _"Iska total GST kitna hai?"_ → Get answer with highlighted table → "See? Grounded answer with exact page citation. No hallucination."
-
-**[0:50-1:10]** Ask: _"Any penalty clauses in this contract?"_ → Risk flags appear → "Auto-detected Force Majeure and liquidated damages clauses."
-
-**[1:10-1:30]** Show admin dashboard → "Full metrics: retrieval nDCG, hallucination rate, usage stats. Production-ready monitoring."
-
-**[1:30-2:00]** "100% local, zero API costs, complete privacy. This is what production AI looks like in 2026."
 
 ---
 
@@ -417,8 +371,8 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 ## 📞 Contact
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@sat1828](https://github.com/sat1828)
+- LinkedIn: [Satyajit Parida](https://www.linkedin.com/in/satyajit-parida-48a34230a/)
+- Email: satyajitparida294@gmail.com
 
 **Open to 50 LPA+ opportunities. Let's build the future of AI for Indian SMEs together.** 🚀
