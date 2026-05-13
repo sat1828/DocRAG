@@ -80,40 +80,8 @@ This isn't another basic RAG tutorial. This project implements **cutting-edge te
 
 ---
 
-## 🏗️ Architecture
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c01e165d-4fc4-4aa6-95d9-3acafe4df963" />
 
-```mermaid
-graph TB
-    User[User Browser] -->|HTTPS| Frontend[Next.js 16 Frontend]
-    Frontend -->|REST API| Backend[FastAPI Backend]
-    
-    Backend -->|JWT Auth| Auth[Auth Service]
-    Backend -->|SQL Queries| Postgres[(PostgreSQL)]
-    Backend -->|Vector Search| Chroma[(ChromaDB)]
-    Backend -->|LLM Inference| Ollama[Ollama Llama 3.3]
-    
-    subgraph Ingestion Pipeline
-        Upload[PDF Upload] --> Docling[Docling Parser]
-        Docling --> Chunk[Text Chunking]
-        Chunk --> Embed[Sentence Transformers]
-        Embed --> Store[ChromaDB Storage]
-        Docling --> GST[GST/Legal Extraction]
-    end
-    
-    subgraph RAG Agent
-        Query[User Query] --> Expand[Query Expansion]
-        Expand --> Retrieve[Vector Search]
-        Retrieve --> Rerank[Cross-Encoder Rerank]
-        Rerank --> Generate[LLM Generation]
-        Generate --> Verify[Self-Verification]
-        Verify --> Tools[GST/Legal Tools]
-        Tools --> Response[Grounded Response]
-    end
-    
-    Upload --> Ingestion Pipeline
-    Query --> RAG Agent
-    Response --> Frontend
-```
 
 ---
 
