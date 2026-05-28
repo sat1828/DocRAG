@@ -1,346 +1,109 @@
-# 🚀 Indian SME Document Intelligence RAG
+<div align="center">
 
-> **Save 70%+ time on document review. Zero cost. 100% private. Built for Indian businesses.**
+# 📄 DocRAG 
+### 100% Private, Zero-Cost AI for Business Documents
 
-[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green.svg)](https://fastapi.tiangolo.com/)
-[![Next.js 16](https://img.shields.io/badge/Next.js-16-black.svg)](https://nextjs.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-black.svg?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 
----
+**DocRAG** is a powerful tool that reads complex PDFs (like GST invoices, vendor contracts, and legal notices) and lets you chat with them. 
 
-## 📌 The Problem (Real-World Impact)
+Unlike most AI apps that send your private files to OpenAI or Google, **DocRAG runs entirely on your own machine.** It costs nothing to run, and your data never leaves your computer.
 
-**Indian SMEs waste ₹2-5 lakhs every month** manually reviewing 50-200 PDFs:
-- GST invoices with complex tax breakdowns
-- Vendor contracts with hidden penalty clauses
-- Legal notices with critical deadlines
-- Compliance documents requiring expert knowledge
-
-**One missed clause = ₹5 lakh fine.** Chartered accountants and lawyers charge ₹5,000-15,000 per document review. Small businesses simply can't afford this.
+</div>
 
 ---
 
-## ✨ The Solution
+## 🌟 What Does It Look Like?
 
-A **production-grade, multi-tenant SaaS** that lets accountants, lawyers, and business owners:
+The user interface is built with Next.js and looks exactly like a premium, professional software product. You upload a document on the left, and chat with the AI on the right. 
 
-1. **Upload** GST invoices, contracts, legal notices (PDFs - scanned or digital)
-2. **Chat naturally** in English or Hinglish: _"Iska total GST kitna hai?"_
-3. **Get grounded answers** with exact citations, highlighted text/tables from specific pages
-4. **Auto-detect** GSTINs, HSN codes, tax breakdowns
-5. **Flag legal risks**: Force Majeure, penalty clauses, compliance gaps
-
-**All running locally. Zero API costs. Complete privacy.**
+<div align="center">
+<img width="1494" height="879" alt="image" src="https://github.com/user-attachments/assets/447d9f96-cd8f-4f2d-85a3-f8ee762a70d4" />
+</div>
 
 ---
 
-## 🎯 2026 Research-Backed Uniqueness
+## 💡 Why I Built This (The Business Problem)
 
-This isn't another basic RAG tutorial. This project implements **cutting-edge techniques** from 2026 research:
+Most small and medium-sized businesses (SMEs) want to use AI to read their documents, but they face two massive problems:
+1. **Privacy:** You cannot legally send confidential employee contracts or tax invoices to public AI servers like ChatGPT.
+2. **Cost:** Paying for APIs every time you process a 50-page document gets incredibly expensive.
 
-### 1. **Docling Parser (IBM, 2026)** 📄
-- Best open-source parser for complex tables, layouts, and scanned docs
-- **Beats Unstructured** on local benchmarks for Indian GST invoices
-- LlamaParse is API-only; Docling is fully local
-
-### 2. **True Multimodal Embeddings** 🖼️
-- Text embeddings via `sentence-transformers` (all-MiniLM-L6-v2)
-- Image/table embeddings via SigLIP for visual content understanding
-- Not just text - understands tables, charts, signatures
-
-### 3. **Agentic Multi-Round RAG (LangGraph)** 🤖
-- Query expansion (3 variations for better retrieval)
-- Hybrid search (vector + BM25 keyword matching)
-- Cross-encoder reranking for precision
-- Tool calling for GST math calculations
-- **Self-verification guardrail** to prevent hallucinations
-
-### 4. **Indian GST Hyper-Focus** 🇮🇳
-- Built-in regex + LLM tools for:
-  - GSTIN validation (format + checksum)
-  - HSN code extraction (4/6/8 digit codes)
-  - Tax total verification (CGST+SGST/IGST reconciliation)
-  - Compliance flags under Indian Contract Act & GST laws
-
-### 5. **Zero-Cost, Local-First Architecture** 💰
-- Ollama + Llama 3.3 8B (no OpenAI/Anthropic API costs)
-- ChromaDB persistent vector store (no Pinecone subscription)
-- PostgreSQL (free, battle-tested)
-- **Total monthly cost: ₹0** after local setup
-
-### 6. **Production-Grade Multi-Tenant SaaS** 🏢
-- Full JWT authentication with RBAC (user/admin roles)
-- Multi-tenant isolation (users see only their documents)
-- Audit logs for compliance
-- Rate limiting, input sanitization, Pydantic validation
-- Docker Compose one-command deployment
-
-**No existing open-source project combines**: Full auth + DB + beautiful glassmorphic 3D UI + production MLOps metrics + Indian SME focus. This is genuinely unique.
+**The Solution:** I built DocRAG to run locally. By using local AI models (Llama 3.3) and open-source tools, this software turns a massive monthly API bill into **₹0 per month**, while keeping data completely safe.
 
 ---
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/c01e165d-4fc4-4aa6-95d9-3acafe4df963" />
+## ⚙️ How It Actually Works 
 
+<div align="center">
+<img width="895" height="447" alt="image" src="https://github.com/user-attachments/assets/525befb0-c132-4c27-abac-f365b70c42d9" />
+</div>
+
+When you upload a PDF and ask a question, here is what happens behind the scenes:
+
+### 1. Reading the Document
+Normal AI tools struggle to read tables inside PDFs. DocRAG uses **IBM Docling** to carefully extract text and tables so the AI understands rows and columns perfectly.
+
+<div align="center">
+<img width="888" height="436" alt="image" src="https://github.com/user-attachments/assets/5f2653a3-cdfb-4072-ba48-9ccc3e7bc0fc" />
+</div>
+
+### 2. Searching for the Answer
+When you ask a question (e.g., *"What is the total tax?"*), the system searches through the document to find the exact paragraph or table that contains the answer. It uses **ChromaDB** to do this in milliseconds.
+
+### 3. Preventing "Hallucinations" (AI Making Things Up)
+AI sometimes lies or makes up answers. To stop this, I added a "Self-Correction" loop using **LangGraph**. Before the AI shows you an answer, the system double-checks: *"Did this answer actually come from the document?"* If it didn't, the system forces the AI to try again.
+
+<div align="center">
+<img width="704" height="496" alt="image" src="https://github.com/user-attachments/assets/379934b1-ea14-4179-b549-9935f80d0485" />
+</div>
 
 ---
 
-## 🚀 Quick Start (One Command)
+## 🔒 Keeping Data Safe (Multi-Tenant Security)
 
-### Prerequisites
-- Docker & Docker Compose
-- 8GB+ RAM (for Ollama model)
-- 10GB+ disk space
+If two different companies use this app, Company A must never be able to see Company B's documents. I built a strict security wall at the database level using **PostgreSQL Row-Level Security (RLS)**. Even if a bug happens, the database physically blocks users from seeing data that doesn't belong to them.
 
-### Deploy Everything
+<div align="center">
+<img width="849" height="407" alt="image" src="https://github.com/user-attachments/assets/5bdbe06f-b37e-4fc0-a1e0-b9830a2090ac" />
+</div>
+
+---
+
+## 📊 Performance & Analytics Dashboard
+
+To make sure the system is running fast and smoothly, DocRAG includes a real-time analytics dashboard. It tracks how fast documents are being read and how accurate the AI is.
+
+<div align="center">
+<img width="894" height="445" alt="image" src="https://github.com/user-attachments/assets/604b1886-754e-4df9-aa34-05ef57542100" />
+</div>
+
+---
+
+## 💻 Technologies Used
+
+* **Frontend:** Next.js 16, React, Tailwind CSS (for a fast, beautiful website).
+* **Backend:** FastAPI, Python (for fast, asynchronous processing).
+* **AI Brain:** Llama 3.3 via Ollama (local AI model).
+* **PDF Reader:** IBM Docling (for advanced table reading).
+* **Database:** PostgreSQL (for users) and ChromaDB (for searching documents).
+
+---
+
+## 🚀 How to Run It on Your Computer
+
+You can start the entire system with just a few commands. It requires no paid API keys.
 
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/indian-sme-doc-intelligence-rag.git
-cd indian-sme-doc-intelligence-rag
+# 1. Clone the code to your computer
+git clone [https://github.com/sat1828/DocRAG.git](https://github.com/sat1828/DocRAG.git)
+cd DocRAG
 
-# One-command deployment
-docker-compose up --build
+# 2. Start the database and website
+docker-compose up -d --build
 
-# Wait for Ollama to pull model (first run only, ~5 minutes)
-# Then access:
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8000/api/docs
-```
-
-### Default Admin Credentials
-- Email: `admin@demo.com`
-- Password: `Admin@123`
-
----
-
-## 📊 Performance Metrics
-
-| Metric | Value | Target |
-|--------|-------|--------|
-| **Retrieval nDCG@5** | 0.87 | >0.85 |
-| **RAGAS Faithfulness** | 0.92 | >0.90 |
-| **Answer Relevancy** | 0.89 | >0.85 |
-| **Hallucination Rate** | 2.5% | <5% |
-| **Avg Response Time** | 1.8s | <2s |
-| **Retrieval Latency** | 85ms | <100ms |
-| **50-page PDF Ingestion** | 28s | <30s |
-
-*Measured on CPU-only machine (Intel i7, 16GB RAM)*
-
----
-
-## 🎨 UI Screenshots
-
-### Landing Page
-- Glassmorphic hero with 3D floating document icons
-- Animated gradient text: "Save 70%+ Time on Document Review"
-- Particle effects on upload
-
-### Dashboard
-- Frosted glass cards with neon borders
-- Document list with GST metadata badges
-- Real-time processing status
-
-### Chat Interface
-- Glass chat bubbles with smooth animations
-- Clickable source citations with page previews
-- Confidence scores and token cost display
-
----
-
-## 🔧 Tech Stack
-
-### Frontend
-- **Next.js 16** (App Router, Server Components)
-- **React 19** + **TypeScript**
-- **Tailwind CSS v4** (custom glassmorphism utilities)
-- **Framer Motion** (parallax, scroll animations)
-- **React Three Fiber** (3D document models, particle effects)
-- **shadcn/ui** (custom glass variants)
-- **Recharts** (metrics dashboard)
-
-### Backend
-- **FastAPI** (async Python 3.12)
-- **SQLAlchemy 2.0** (async ORM)
-- **Alembic** (database migrations)
-- **Pydantic v2** (validation)
-- **python-jose** (JWT auth)
-- **slowapi** (rate limiting)
-- **structlog** (structured logging)
-
-### AI/ML
-- **Docling** (PDF parsing - IBM 2026)
-- **LangGraph** (agentic RAG workflow)
-- **sentence-transformers** (text embeddings)
-- **SigLIP** (multimodal embeddings)
-- **Ollama** (Llama 3.3 8B inference)
-- **ChromaDB** (persistent vector store)
-
-### Infrastructure
-- **PostgreSQL 16** (relational data)
-- **Docker Compose** (orchestration)
-- **GitHub Actions** (CI/CD)
-
----
-
-## 📁 Project Structure
-
-```
-indian-sme-doc-intelligence-rag/
-├── backend/                  # FastAPI backend
-│   ├── app/
-│   │   ├── core/            # Config, auth, database
-│   │   ├── models/          # SQLAlchemy models
-│   │   ├── schemas/         # Pydantic schemas
-│   │   ├── routers/         # API endpoints
-│   │   ├── services/        # AI/ML services
-│   │   └── utils/           # Helpers
-│   ├── alembic/             # Database migrations
-│   ├── tests/               # Pytest tests
-│   └── Dockerfile
-├── frontend/                 # Next.js frontend
-│   ├── app/                 # Pages (App Router)
-│   ├── components/          # React components
-│   └── lib/                 # API utilities
-├── docker-compose.yml
-├── .github/workflows/ci.yml
-├── notebooks/eval.ipynb     # RAGAS evaluation
-└── README.md
-```
-
----
-
-## 🧪 API Examples
-
-### Register User
-```bash
-curl -X POST http://localhost:8000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"email": "user@example.com", "password": "SecurePass123!"}'
-```
-
-### Upload Document
-```bash
-curl -X POST http://localhost:8000/api/documents/upload \
-  -H "Authorization: Bearer <token>" \
-  -F "file=@gst_invoice.pdf"
-```
-
-### Query Document
-```bash
-curl -X POST http://localhost:8000/api/chat/query \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "What is the total GST amount?",
-    "document_id": "550e8400-e29b-41d4-a716-446655440000"
-  }'
-```
-
-### Response
-```json
-{
-  "answer": "The total GST amount is ₹18,000 (9% CGST + 9% SGST on ₹1,00,000)",
-  "sources": [
-    {
-      "page": 2,
-      "modality": "table",
-      "snippet": "CGST: ₹9,000 | SGST: ₹9,000 | Total: ₹1,18,000",
-      "confidence": 0.95
-    }
-  ],
-  "confidence": 0.92,
-  "hallucination_risk": "low",
-  "response_time_ms": 1850
-}
-
----
-
-## 🔍 Evaluation & Testing
-
-### Run RAGAS Evaluation
-```bash
-cd notebooks
-jupyter lab eval.ipynb
-```
-
-Metrics calculated:
-- **Faithfulness**: Answer grounded in retrieved context
-- **Answer Relevancy**: Directly addresses user query
-- **Context Precision**: Retrieved chunks are relevant
-- **nDCG@5**: Ranking quality of retrieved documents
-
-### Run Tests
-```bash
-cd backend
-pytest tests/ -v --cov=app
-```
-
----
-
-## ⚠️ Trade-Offs & Failure Modes
-
-### Known Limitations
-1. **CPU-only ingestion**: 50-page PDFs take 25-35s (acceptable for batch, not real-time)
-2. **Llama 3.3 8B struggles with complex Hinglish** (mitigated by query expansion)
-3. **ChromaDB single-node** scales to ~100 users (beyond that needs distributed solution)
-4. **No GPU**: Embedding generation slower but still <2s for typical docs
-
-### Failure Scenarios Handled
-- **OCR fails on poor scans** → Fallback to text-only extraction with warning
-- **LLM hallucinates** → Self-verification guardrail flags high-risk answers
-- **Multi-tenant leak** → Metadata filters enforce user isolation at DB level
-- **Rate limit abuse** → Slowapi blocks excessive requests
-
----
-
-## 📚 References & Citations
-
-1. **Docling**: IBM Research. "Docling: Powerful Document Parsing." 2026. [github.com/DS4SD/docling](https://github.com/DS4SD/docling)
-2. **LangGraph**: LangChain. "Building Agentic RAG with LangGraph." 2025.
-3. **RAGAS**: Es et al. "RAGAS: Automated Evaluation of RAG Pipelines." 2024.
-4. **SigLIP**: Zhai et al. "Sigmoid Loss for Language Image Pre-Training." Google, 2024.
-5. **Indian GST Act**: Central Board of Indirect Taxes and Customs. "GST Compliance Guidelines." 2025.
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
----
-
-## 📄 License
-
-MIT License - See [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgments
-
-- IBM Research for Docling
-- LangChain team for LangGraph
-- Hugging Face for sentence-transformers
-- Ollama for local LLM inference
-- Indian SME community for inspiration and feedback
-
----
-
-**Built with ❤️ for Indian businesses. Save time, save money, stay compliant.**
-
-> **"This project proves I can ship production AI SaaS as a fresher. From database design to 3D UI, from RAG evaluation to Docker deployment - I own the full stack."**
-
----
-
-## 📞 Contact
-
-- GitHub: [@sat1828](https://github.com/sat1828)
-- LinkedIn: [Satyajit Parida](https://www.linkedin.com/in/satyajit-parida-48a34230a/)
-- Email: satyajitparida294@gmail.com
-
-**Open to 50 LPA+ opportunities. Let's build the future of AI for Indian SMEs together.** 🚀
+# 3. Download the free AI model
+ollama pull llama3.3
